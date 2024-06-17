@@ -1,0 +1,19 @@
+TRAIN:
+  BATCH_SIZE: 4
+  EPOCHS: 72
+  DATASET: 'SpectralDopplerNet_IMPACT_Preprocessed_SERGI'
+  INPUT_SIZE_IRR: [600,300]
+  NUM_CLASSES: 3
+  NUM_KEYPOINTS: 6
+  ALLOWED_KEYPOINTS: ["ejection beginning", "mid upstroke", "maximum velocity", "mid deceleration point", "ejection end", "ejection beginning"]
+  EVAL_INTERVAL: 1
+MODEL:
+  NAME: 'KeypointRCNN' # ["KeypointRCNN", "KeypointRCNN+GCN+HeatmapLoss", "KeypointRCNN+GCN+MSELoss"]
+  BACKBONE: 'resnet_50'
+  LOSS_FUNC: ['IoU'] #--
+AUG:
+  METHOD: 'cycleDetect'
+  PROB: 0.50
+SOLVER:
+  BASE_LR: 0.0001 # BEST: 0.00005
+  OPTIMIZER: 'SGD'
